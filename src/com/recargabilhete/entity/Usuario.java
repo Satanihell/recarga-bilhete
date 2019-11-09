@@ -7,76 +7,90 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Usuario {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private long idUsuario;
 	private String nome;
-	private Date data = new Date();
+	@Temporal(TemporalType.DATE)
+	private Date dataNasc;
 	private long cpf;
 	private long rg;
 	private String endereco;
-	
-	public long getId() {
-		return id;
+
+	public long getIdUsuario() {
+		return idUsuario;
 	}
-	public void setId(long id) {
-		this.id = id;
+
+	public void setIdUsuario(long idUsuario) {
+		this.idUsuario = idUsuario;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Date getData() {
-		return data;
+
+	public Date getDataNasc() {
+		return dataNasc;
 	}
-	public void setData(Date data) {
-		this.data = data;
+
+	public void setDataNasc(Date dataNasc) {
+		this.dataNasc = dataNasc;
 	}
+
 	public long getCpf() {
 		return cpf;
 	}
+
 	public void setCpf(long cpf) {
 		this.cpf = cpf;
 	}
+
 	public long getRg() {
 		return rg;
 	}
+
 	public void setRg(long rg) {
 		this.rg = rg;
 	}
+
 	public String getEndereco() {
 		return endereco;
 	}
+
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	
+
 	@Override
-	public boolean equals (Object obj) {
+	public boolean equals(Object obj) {
 		if (obj != null && obj instanceof Usuario) {
 			Usuario usuario = (Usuario) obj;
-			return usuario.getId() == this.getId();
+			return usuario.getIdUsuario() == this.getIdUsuario();
 		}
 		return false;
 	}
-	
+
 	@Override
-	public String toString () {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	public String toString() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		StringBuffer sb = new StringBuffer();
-		sb.append("Id" + getId());
+		sb.append("IdUsuario" + getIdUsuario());
 		sb.append("Nome" + getNome());
-		sb.append("Data" + getData());
+		sb.append("DataNasc" + sdf.format(getDataNasc()));
 		sb.append("CPF" + getCpf());
-		sb.append("RG" + sdf.format(getRg()));
-		sb.append("Endereço" + getEndereco());
-	return sb.toString();
+		sb.append("RG" + getRg());
+		sb.append("Endereco" + getEndereco());
+		return sb.toString();
 	}
-	
+
 }

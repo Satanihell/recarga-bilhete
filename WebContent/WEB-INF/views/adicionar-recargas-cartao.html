@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Adicionar Tipo de Recarrega</title>
+<link
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+	<h1>Adicionar Tipo de Recarrega</h1>
+
+	<form th:object="${tipoRecarga}" action="#"
+		th:action="@{/adicionar-tipo-recarga}" method="post" id="frm">
+		<div class="container">
+			<div class="form-group">
+				<label>Tipo de Recarga</label> <input class="form-control"
+					type="text" name="idTipoRecarga"
+					placeholder="Informe o Id do Tipo de Recarga" />
+			</div>
+			<div class="form-group">
+				<label>Id Cartão</label> <input class="form-control" type="text"
+					name="idCartao" placeholder="Informe o id do Cartão" />
+			</div>
+			<div class="form-group">
+				<label>Valor</label> <input class="form-control"
+					type="text" name="valor"
+					placeholder="Informe o valor da Recarga" />
+			</div>
+			<div class="form-group">
+				<label>Tipo de Integração</label> <input class="form-control"
+					type="text" name="tipoIntegracao"
+					placeholder="Informe o tipo de integração" />
+			</div>
+			<div class="form-group">
+				<label>Data de Validade</label> <input class="form-control"
+					type="date" name="validadeRecarga" />
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary" type="submit" name="cmd"
+					value="adicionar">Adicionar</button>
+			</div>
+		</div>
+	</form>
+
+</body>
+</html>

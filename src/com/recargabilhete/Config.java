@@ -32,6 +32,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = {"com.recargabilhete.repository"})
 public class Config implements WebMvcConfigurer {
+	
 	@Autowired
 	ApplicationContext ctx;
 	
@@ -89,6 +90,10 @@ public class Config implements WebMvcConfigurer {
 		return new JpaTransactionManager(entityManagerFactory());
 	}
 
+	@Bean
+	public JpaTransactionManager transactionManager(EntityManagerFactory emf) {
+		return new JpaTransactionManager(emf);
+	}
 	
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {

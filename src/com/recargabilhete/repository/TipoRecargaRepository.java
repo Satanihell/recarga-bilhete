@@ -3,10 +3,10 @@ package com.recargabilhete.repository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.recargabilhete.entity.Usuario;
+import com.recargabilhete.entity.TipoRecarga;
 
 @Repository
-public interface UsuarioRepository extends CrudRepository <Usuario, Long>{
+public interface TipoRecargaRepository extends CrudRepository <TipoRecarga, Long>{
 
 
 }
