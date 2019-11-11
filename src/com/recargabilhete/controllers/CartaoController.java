@@ -15,7 +15,6 @@ import com.recargabilhete.repository.CartaoRepository;
 import com.recargabilhete.repository.UsuarioRepository;
 
 @Controller
-@RequestMapping("/adicionar-cartao")
 public class CartaoController {
 	
 	@Autowired
@@ -24,18 +23,16 @@ public class CartaoController {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
-	@RequestMapping(method=RequestMethod.GET)
-	public ModelAndView cartao() { 
+	@RequestMapping(path = "/adicionar-cartao", method=RequestMethod.GET)
+	public ModelAndView cartaoAdicionar() { 
 		ModelAndView mv = new ModelAndView("adicionar-cartao");
-		Iterable<Cartao> iter = cartaoRepository.findAll();
 		Cartao cartao = new Cartao();
 		mv.addObject("cartao", cartao);
-		mv.addObject("lista", iter);
 		return mv;
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, name = "salvar")
-	public ModelAndView salvar(@ModelAttribute("cartao") Cartao cartao, HttpServletRequest req) {
+	@RequestMapping(path = "/adicionar-cartao", method=RequestMethod.POST, name = "salvar")
+	public ModelAndView cartaoSalvar(@ModelAttribute("cartao") Cartao cartao, HttpServletRequest req) {
 		long idUsuario = Long.parseLong(req.getParameter("idUsuario"));
 		Usuario usuario = usuarioRepository.findById(idUsuario).orElse(null);
 		cartao.setUsuario(usuario);
@@ -45,6 +42,16 @@ public class CartaoController {
 		cartaoRepository.save(cartao);
 		ModelAndView mv = new ModelAndView("adicionar-cartao");
 		mv.addObject("cartao", new Cartao());
+		return mv;
+	}
+	
+	@RequestMapping(path = "/pesquisar-cartao", method=RequestMethod.GET)
+	public ModelAndView cartaoPesquisar() { 
+		ModelAndView mv = new ModelAndView("pesquisar-cartao");
+		Iterable<Cartao> iter = cartaoRepository.findAll();
+		Cartao cartao = new Cartao();
+		mv.addObject("cartao", cartao);
+		mv.addObject("lista", iter);
 		return mv;
 	}
 

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Alterar Usuarios</title>
+<link
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+	<h1>Alterar Usuarios</h1>
+
+	<form th:object="${usuario}" action="#" th:action="@{'/pesquisar-usuario/alterar-usuario/' + ${usuario.idUsuario}}"
+		method="post" id="frm" name="alterar">
+		<div class="container">
+			<div class="form-group">
+				<label>Nome</label> <input class="form-control" type="text"
+					name="nome" th:value="${usuario.nome}"/>
+			</div>
+			<div class="form-group">
+				<label>Data de Nascimento</label> <input class="form-control"
+					type="text" name="dataNasc" th:value="${#dates.format(usuario.dataNasc, 'dd/MM/yyyy')}" maxlength="10"
+					autocomplete="off" />
+			</div>
+			<div class="form-group">
+				<label>CPF</label> <input class="form-control" th:value="${usuario.cpf}" type="text"
+					name="cpf" />
+			</div>
+			<div class="form-group">
+				<label>RG</label> <input class="form-control" th:value="${usuario.rg}" type="text" name="rg" />
+			</div>
+			<div class="form-group">
+				<label>Endereço</label> <input class="form-control" th:value="${usuario.endereco}" type="text"
+					name="endereco"/>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary" type="submit" name="cmd"
+					value="alterar">Alterar</button>
+			</div>
+
+		</div>
+	</form>
+</body>
+</html>
