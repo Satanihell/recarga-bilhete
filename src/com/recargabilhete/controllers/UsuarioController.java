@@ -11,17 +11,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.recargabilhete.entity.Usuario;
-//import com.recargabilhete.repository.UsuarioRepository;
-import com.recargabilhete.repository.UsuarioReposytorySQL;
+import com.recargabilhete.repository.UsuarioRepository;
+//import com.recargabilhete.repository.UsuarioReposytorySQL;
 
 @Controller
 public class UsuarioController {
 
-//	@Autowired
-//	private UsuarioRepository usuarioRepository;
-
 	@Autowired
-	private UsuarioReposytorySQL usuarioRepository;
+	private UsuarioRepository usuarioRepository;
+
+//	@Autowired
+//	private UsuarioReposytorySQL usuarioRepository;
 
 	@RequestMapping(path = "/adicionar-usuario", method = RequestMethod.GET)
 	public ModelAndView adicionarUsuario() {
@@ -54,7 +54,7 @@ public class UsuarioController {
 	public ModelAndView pesquisarUsuarioId(@ModelAttribute("usuario") Usuario usuarioDigitado, HttpServletRequest req) {
 		ModelAndView mv = new ModelAndView("pesquisar-usuario");
 		long idUsuario = Long.parseLong(req.getParameter("idUsuario"));
-		Usuario usuario = usuarioRepository.findByIdProcedure(idUsuario).orElse(null);
+		Usuario usuario = usuarioRepository.findById(idUsuario).orElse(null);
 		System.out.print(usuario);
 		mv.addObject("usuario", usuario);
 		mv.addObject("lista", usuario);

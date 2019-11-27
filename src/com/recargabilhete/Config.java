@@ -44,7 +44,11 @@ public class Config implements WebMvcConfigurer {
 		dataSource.setUsername("root");
 			dataSource.setPassword("89493735");
 			dataSource.setUrl(
+<<<<<<< HEAD
 				"jdbc:mariadb://localhost/recargabilhetedb?createDatabaseIfNotExist=true"); 
+=======
+				"jdbc:mysql://recarga-bilhete.mysql.database.azure.com?createDatabaseIfNotExist=true"); 
+>>>>>>> master
 			return dataSource;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -56,7 +60,11 @@ public class Config implements WebMvcConfigurer {
 	public Properties hibernateProperties() {
 		Properties hibernateProp = new Properties();
 		hibernateProp.put("hibernate.dialect", 
+<<<<<<< HEAD
 			"org.hibernate.dialect.MariaDB53Dialect");
+=======
+			"org.hibernate.dialect.MySQLDialect");
+>>>>>>> master
 		hibernateProp.put("hibernate.hbm2ddl.auto", "update");
 		hibernateProp.put("hibernate.format_sql", true);
 		hibernateProp.put("hibernate.use_sql_comments", true);
