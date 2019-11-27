@@ -44,7 +44,7 @@ public class Config implements WebMvcConfigurer {
 		dataSource.setUsername("recargabilhetedb");
 			dataSource.setPassword("89493735");
 			dataSource.setUrl(
-				"jdbc:mysql://localhost:53607/recargabilhetedb?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC"); 
+				"jdbc:mysql://localhost/recargabilhetedb?createDatabaseIfNotExist=true"); 
 			return dataSource;
 		} catch (Exception e) {
 			e.printStackTrace();
