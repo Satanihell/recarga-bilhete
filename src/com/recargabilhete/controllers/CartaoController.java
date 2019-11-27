@@ -30,6 +30,12 @@ public class CartaoController {
 		mv.addObject("cartao", cartao);
 		return mv;
 	}
+	
+	@RequestMapping(path = {"/", "/home"}, method = RequestMethod.GET)
+	public ModelAndView home() {
+		ModelAndView mv = new ModelAndView("home");
+		return mv;
+	}
 
 	@RequestMapping(path = "/adicionar-cartao", method = RequestMethod.POST, name = "salvar")
 	public ModelAndView cartaoSalvar(@ModelAttribute("cartao") Cartao cartao, @RequestParam("idUsuario") long idUsuario) {
