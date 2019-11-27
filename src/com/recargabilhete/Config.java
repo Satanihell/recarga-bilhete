@@ -42,7 +42,7 @@ public class Config implements WebMvcConfigurer {
 			DriverManagerDataSource dataSource = new DriverManagerDataSource();
 			dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
 		dataSource.setUsername("root");
-			dataSource.setPassword("89493735");
+			dataSource.setPassword("");
 			dataSource.setUrl(
 				"jdbc:mariadb://localhost/recargabilhetedb?createDatabaseIfNotExist=true"); 
 			return dataSource;
