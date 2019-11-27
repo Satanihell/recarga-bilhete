@@ -40,11 +40,11 @@ public class Config implements WebMvcConfigurer {
 	public DataSource dataSource() {
 	try {
 			DriverManagerDataSource dataSource = new DriverManagerDataSource();
-			dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
+			dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
 		dataSource.setUsername("root");
 			dataSource.setPassword("");
 			dataSource.setUrl(
-				"jdbc:mariadb://localhost/recargabilhetedb?createDatabaseIfNotExist=true"); 
+				"jdbc:mysql:53607//localhost:/recargabilhetedb?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC"); 
 			return dataSource;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -56,7 +56,7 @@ public class Config implements WebMvcConfigurer {
 	public Properties hibernateProperties() {
 		Properties hibernateProp = new Properties();
 		hibernateProp.put("hibernate.dialect", 
-			"org.hibernate.dialect.MariaDB53Dialect");
+			"org.hibernate.dialect.MySQL8Dialect");
 		hibernateProp.put("hibernate.hbm2ddl.auto", "update");
 		hibernateProp.put("hibernate.format_sql", true);
 		hibernateProp.put("hibernate.use_sql_comments", true);
