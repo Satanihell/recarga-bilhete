@@ -40,7 +40,7 @@ public class Config implements WebMvcConfigurer {
 	public DataSource dataSource() {
 	try {
 			DriverManagerDataSource dataSource = new DriverManagerDataSource();
-			dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+			dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
 		dataSource.setUsername("root");
 			dataSource.setPassword("89493735");
 			dataSource.setUrl(
