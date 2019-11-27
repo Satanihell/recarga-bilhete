@@ -41,10 +41,10 @@ public class Config implements WebMvcConfigurer {
 	try {
 			DriverManagerDataSource dataSource = new DriverManagerDataSource();
 			dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		dataSource.setUsername("recargabilhetedb");
-			dataSource.setPassword("89493735");
+		dataSource.setUsername("root");
+			dataSource.setPassword("");
 			dataSource.setUrl(
-				"jdbc:mysql://localhost/recargabilhetedb?createDatabaseIfNotExist=true"); 
+				"jdbc:mysql://localhost/MYSQLCONNSTR_localdb?createDatabaseIfNotExist=true"); 
 			return dataSource;
 		} catch (Exception e) {
 			e.printStackTrace();
