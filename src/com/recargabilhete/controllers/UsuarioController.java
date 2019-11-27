@@ -12,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.recargabilhete.entity.Usuario;
 import com.recargabilhete.repository.UsuarioRepository;
-//import com.recargabilhete.repository.UsuarioReposytorySQL;
 
 @Controller
 public class UsuarioController {
@@ -20,8 +19,6 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
-//	@Autowired
-//	private UsuarioReposytorySQL usuarioRepository;
 
 	@RequestMapping(path = "/adicionar-usuario", method = RequestMethod.GET)
 	public ModelAndView adicionarUsuario() {
