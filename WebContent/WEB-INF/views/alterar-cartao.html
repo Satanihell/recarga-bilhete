@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
+<meta charset="ISO-8859-1">
+<title>Alterar Cartão</title>
 <link
 	href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
 	rel="stylesheet">
@@ -8,8 +10,6 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 	crossorigin="anonymous"></script>
@@ -73,24 +73,40 @@
 
 	<br>
 
-	<h1>Adicionar Cartão</h1>
+	<h1>Alterar Cartão</h1>
 
-	<form th:object="${cartao}" action="#" th:action="@{/adicionar-cartao}"
-		method="post" id="frm">
+	<form th:object="${cartao}" action="#"
+		th:action="@{'/pesquisar-cartao/alterar-cartao/' + ${cartao.idCartao}}"
+		method="post" id="frm" name="alterar">
 		<div class="container">
 			<div class="form-group">
-				<label>Id Usuario</label> <input class="form-control" type="text"
-					name="idUsuario" placeholder="Informe o Id do Usuario" />
+				<label>Id</label> <input class="form-control" type="text"
+					name="idCartao" th:value="${cartao.idCartao}" />
+			</div>
+			<div class="form-group">
+				<label>idTitular Titular</label> <input class="form-control"
+					type="text" name="cartao.usuario.idUsuario"
+					th:value="${cartao.usuario.idUsuario}" />
 			</div>
 			<div class="form-group">
 				<label>Tipo do Cartão</label> <input class="form-control"
-					type="text" name="tipoCartao"
-					placeholder="Informe o tipo do cartão" />
+					th:value="${cartao.tipoCartao}" type="text" name="tipoCartao" />
+			</div>
+			<div class="form-group">
+				<label>Data de Expedição</label> <input class="form-control"
+					type="text" name="dataExpedicao"
+					th:value="${#dates.format(cartao.dataExpedicao, 'dd/MM/yyyy')}"
+					maxlength="10" autocomplete="off" />
+			</div>
+			<div class="form-group">
+				<label>Status Cartão</label> <input class="form-control"
+					th:value="${cartao.statusCartao}" type="text" name="statusCartao" />
 			</div>
 			<div class="form-group">
 				<button class="btn btn-primary" type="submit" name="cmd"
-					value="adicionar">Adicionar</button>
+					value="alterar">Alterar</button>
 			</div>
+
 		</div>
 	</form>
 

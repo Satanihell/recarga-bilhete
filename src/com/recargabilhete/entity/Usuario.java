@@ -18,7 +18,7 @@ public class Usuario {
 	private long idUsuario;
 	private String nome;
 	@Temporal(TemporalType.DATE)
-	private Date dataNasc;
+	private Date dataNasc = new Date();
 	private long cpf;
 	private long rg;
 	private String endereco;

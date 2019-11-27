@@ -2,7 +2,6 @@ package com.recargabilhete.entity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -18,9 +17,9 @@ public class RecargasCartao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idRecargaCartao;
-	@ManyToOne(cascade=CascadeType.DETACH, fetch = FetchType.LAZY)  
+	@ManyToOne(fetch = FetchType.EAGER)
 	private TipoRecarga tipoRecarga = new TipoRecarga();
-	@ManyToOne(cascade=CascadeType.DETACH, fetch = FetchType.LAZY) 
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Cartao cartao = new Cartao();
 	private double valor;
 	private int integracao;
@@ -89,12 +88,12 @@ public class RecargasCartao {
 	public String toString() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		StringBuffer sb = new StringBuffer();
-		sb.append("idRecargaCartao;" + getIdRecargaCartao());
-		sb.append("idTipoRecarga;" + getTipoRecarga());
-		sb.append("idCartao;" + getCartao());
-		sb.append("valor;" + getValor());
-		sb.append("integracao;;" + getIntegracao());
-		sb.append("ultimaBilhetagem ;" + sdf.format(getUltimaBilhetagem()));
+		sb.append("IdRecargaCartao" + getIdRecargaCartao());
+		sb.append("IdTipoRecarga" + getTipoRecarga());
+		sb.append("IdCartao" + getCartao());
+		sb.append("Valor" + getValor());
+		sb.append("Integracao" + getIntegracao());
+		sb.append("UltimaBilhetagem" + sdf.format(getUltimaBilhetagem()));
 		return sb.toString();
 	}
 

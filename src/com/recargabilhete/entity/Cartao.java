@@ -1,9 +1,6 @@
 package com.recargabilhete.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.GeneratedValue;
@@ -19,7 +16,7 @@ public class Cartao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idCartao;
-	@ManyToOne(cascade=CascadeType.DETACH, fetch = FetchType.LAZY) 
+	@ManyToOne
 	private Usuario usuario = new Usuario();
 	private String tipoCartao;
 	@Temporal(TemporalType.DATE)

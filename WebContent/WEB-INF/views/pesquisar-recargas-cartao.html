@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Pesquisa de Usuarios</title>
+<title>Pesquisa de Recargas Cartão</title>
 <link
 	href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
 	rel="stylesheet">
@@ -75,15 +75,16 @@
 </nav>
 <br>
 <body>
-	<h1>Pesquisar Usuarios</h1>
-	<form th:object="${usuario}" action="#"
-		th:action="@{/pesquisar-usuario}" method="get" id="frm"
+	<h1>Pesquisar de Recargas Cartão</h1>
+	<form th:object="${recargasCartao}" action="#"
+		th:action="@{/pesquisar-recargas-cartao}" method="get" id="frm"
 		name="pesquisar">
 		<div class="container">
 
 			<div class="form-group">
-				<label>Id Usuario</label> <input class="form-control" type="text"
-					name="idUsuario" placeholder="Informe o idUsuario" />
+				<label>Id Recargas do Cartão</label> <input class="form-control"
+					type="text" name="idRecargaCartao"
+					placeholder="Informe o idRecargaCartao" />
 			</div>
 
 			<div class="form-group">
@@ -96,27 +97,27 @@
 		<table class="table table-striped">
 			<thead class="table-dark">
 				<tr>
-					<th>IdUsuario</th>
-					<th>Nome</th>
-					<th>Cpf</th>
-					<th>RG</th>
-					<th>Data Nasc</th>
-					<th>Endereço</th>
+					<th>IdRecargaCartao</th>
+					<th>IdTipoRecarga</th>
+					<th>idCartao</th>
+					<th>Valor</th>
+					<th>Integração</th>
+					<th>Ultima Bilhetagem</th>
 					<th>Alterar</th>
 					<th>Excluir</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="usuario : ${lista}">
-					<td th:text="${usuario.idUsuario}" />
-					<td th:text="${usuario.nome}" />
-					<td th:text="${usuario.cpf}" />
-					<td th:text="${usuario.rg}" />
-					<td th:text="${#dates.format(usuario.dataNasc, 'dd/MM/yyyy')}" />
-					<td th:text="${usuario.endereco}" />
+				<tr th:each="recargasCartao : ${lista}">
+					<td th:text="${recargasCartao.idRecargaCartao}" />
+					<td th:text="${recargasCartao.tipoRecarga.idTipoRecarga}" />
+					<td th:text="${recargasCartao.cartao.idCartao}" />
+					<td th:text="${recargasCartao.valor}" />
+					<td th:text="${recargasCartao.integracao}" />
+					<td th:text="${#dates.format(recargasCartao.ultimaBilhetagem, 'dd/MM/yyyy')}" />
 					<td>
 						<form
-							th:action="@{'/pesquisar-usuario/alterar-usuario/' + ${usuario.idUsuario}}"
+							th:action="@{'/pesquisar-recargas-cartao/alterar-recargas-cartao/' + ${recargasCartao.idRecargaCartao}}"
 							action="#" method="get" name="alterar">
 							<button type="submit" class="btn btn-default"
 								aria-label="Left Align" value="remover">
@@ -126,7 +127,7 @@
 					</td>
 					<td>
 						<form
-							th:action="@{'/pesquisar-usuario/remover/' + ${usuario.idUsuario}}"
+							th:action="@{'/pesquisar-recargas-cartao/remover/' + ${recargasCartao.idRecargaCartao}}"
 							action="#" method="post" name="remover">
 							<button type="submit" class="btn btn-danger"
 								aria-label="Left Align" value="remover">
