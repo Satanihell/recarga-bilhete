@@ -44,7 +44,7 @@ public class Config implements WebMvcConfigurer {
 		dataSource.setUsername("root");
 			dataSource.setPassword("");
 			dataSource.setUrl(
-				"jdbc:mysql://localhost/MYSQLCONNSTR_localdb?createDatabaseIfNotExist=true"); 
+				"jdbc:mysql://recarga-bilhete.mysql.database.azure.com?createDatabaseIfNotExist=true"); 
 			return dataSource;
 		} catch (Exception e) {
 			e.printStackTrace();
